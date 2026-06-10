@@ -1,0 +1,130 @@
+Job started at: Wed Jun 10 01:58:22 PM EDT 2026
+Running on node: p0224.ten.osc.edu
+Working directory: /users/PAS2608/laurenbryant/Dinking-Around-in-Summer-Lab-26/CNN-goodenough-final-work
+----------------------------
+/var/spool/slurmd/job48157252/slurm_script: line 14: cd: /users/PAS2608/laurenbryant/CNN-goodenough-final-work: No such file or directory
+2026-06-10 13:58:31.400022: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-10 13:59:03.692948: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+loaded data in 4.4s
+training: (41959, 43)
+testing : (10678, 43)
+X_train: (41959, 48, 100, 2) y_train: (41959, 3)
+X_test : (10678, 48, 100, 2) y_test : (10678, 3)
+after normalization, X_train mean: -5.6589123e-08 std: 1.2429539
+Model: "functional"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input_layer (InputLayer)        │ (None, 48, 100, 2)     │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ circular_padding                │ (None, 50, 100, 2)     │             0 │
+│ (CircularPadding)               │                        │               │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d (Conv2D)                 │ (None, 50, 100, 32)    │           992 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ max_pooling2d (MaxPooling2D)    │ (None, 25, 50, 32)     │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_1 (Conv2D)               │ (None, 25, 50, 64)     │        30,784 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ max_pooling2d_1 (MaxPooling2D)  │ (None, 12, 25, 64)     │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ flatten (Flatten)               │ (None, 19200)          │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense (Dense)                   │ (None, 64)             │     1,228,864 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout (Dropout)               │ (None, 64)             │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_1 (Dense)                 │ (None, 3)              │           195 │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+ Total params: 1,260,835 (4.81 MB)
+ Trainable params: 1,260,835 (4.81 MB)
+ Non-trainable params: 0 (0.00 B)
+Epoch 1/50
+591/591 - 42s - 71ms/step - loss: 0.0505 - val_loss: 0.0306
+Epoch 2/50
+591/591 - 41s - 69ms/step - loss: 0.0251 - val_loss: 0.0129
+Epoch 3/50
+591/591 - 41s - 69ms/step - loss: 0.0219 - val_loss: 0.0094
+Epoch 4/50
+591/591 - 41s - 69ms/step - loss: 0.0198 - val_loss: 0.0114
+Epoch 5/50
+591/591 - 40s - 68ms/step - loss: 0.0188 - val_loss: 0.0080
+Epoch 6/50
+591/591 - 40s - 69ms/step - loss: 0.0169 - val_loss: 0.0096
+Epoch 7/50
+591/591 - 41s - 69ms/step - loss: 0.0165 - val_loss: 0.0075
+Epoch 8/50
+591/591 - 40s - 69ms/step - loss: 0.0153 - val_loss: 0.0064
+Epoch 9/50
+591/591 - 40s - 68ms/step - loss: 0.0145 - val_loss: 0.0094
+Epoch 10/50
+591/591 - 40s - 68ms/step - loss: 0.0133 - val_loss: 0.0066
+Epoch 11/50
+591/591 - 40s - 68ms/step - loss: 0.0132 - val_loss: 0.0134
+Epoch 12/50
+591/591 - 40s - 68ms/step - loss: 0.0127 - val_loss: 0.0093
+Epoch 13/50
+591/591 - 40s - 68ms/step - loss: 0.0119 - val_loss: 0.0063
+Epoch 14/50
+591/591 - 40s - 68ms/step - loss: 0.0114 - val_loss: 0.0055
+Epoch 15/50
+591/591 - 40s - 68ms/step - loss: 0.0112 - val_loss: 0.0054
+Epoch 16/50
+591/591 - 40s - 68ms/step - loss: 0.0104 - val_loss: 0.0067
+Epoch 17/50
+591/591 - 41s - 69ms/step - loss: 0.0100 - val_loss: 0.0037
+Epoch 18/50
+591/591 - 42s - 71ms/step - loss: 0.0097 - val_loss: 0.0037
+Epoch 19/50
+591/591 - 42s - 70ms/step - loss: 0.0092 - val_loss: 0.0036
+Epoch 20/50
+591/591 - 42s - 71ms/step - loss: 0.0088 - val_loss: 0.0031
+Epoch 21/50
+591/591 - 41s - 69ms/step - loss: 0.0084 - val_loss: 0.0032
+Epoch 22/50
+591/591 - 40s - 68ms/step - loss: 0.0081 - val_loss: 0.0033
+Epoch 23/50
+591/591 - 40s - 67ms/step - loss: 0.0077 - val_loss: 0.0028
+Epoch 24/50
+591/591 - 40s - 68ms/step - loss: 0.0072 - val_loss: 0.0031
+Epoch 25/50
+591/591 - 40s - 67ms/step - loss: 0.0069 - val_loss: 0.0031
+Epoch 26/50
+591/591 - 40s - 68ms/step - loss: 0.0067 - val_loss: 0.0028
+Epoch 27/50
+591/591 - 41s - 69ms/step - loss: 0.0065 - val_loss: 0.0027
+Epoch 28/50
+591/591 - 42s - 71ms/step - loss: 0.0062 - val_loss: 0.0027
+Epoch 29/50
+591/591 - 41s - 70ms/step - loss: 0.0058 - val_loss: 0.0041
+Epoch 30/50
+591/591 - 42s - 71ms/step - loss: 0.0057 - val_loss: 0.0028
+Epoch 31/50
+591/591 - 41s - 69ms/step - loss: 0.0055 - val_loss: 0.0029
+Epoch 32/50
+591/591 - 40s - 68ms/step - loss: 0.0053 - val_loss: 0.0026
+Epoch 33/50
+591/591 - 40s - 67ms/step - loss: 0.0052 - val_loss: 0.0025
+Epoch 34/50
+591/591 - 40s - 67ms/step - loss: 0.0049 - val_loss: 0.0029
+Epoch 35/50
+591/591 - 40s - 67ms/step - loss: 0.0049 - val_loss: 0.0027
+Epoch 36/50
+591/591 - 40s - 67ms/step - loss: 0.0048 - val_loss: 0.0034
+Epoch 37/50
+591/591 - 41s - 69ms/step - loss: 0.0048 - val_loss: 0.0031
+Epoch 38/50
+591/591 - 42s - 71ms/step - loss: 0.0046 - val_loss: 0.0026
+trained in 1542.5s
+UNWEIGHTED
+  theta: mean= -0.091   std=  0.552
+  phi  : mean=  0.180   std=  6.531
+WEIGHTED
+  theta: mean= -0.060   std=  0.526
+  phi  : mean=  0.180   std=  6.490
+
+total wall time: 0h 26m 8s
+all done
+---------------------------
+Job ended at: Wed Jun 10 02:24:52 PM EDT 2026
