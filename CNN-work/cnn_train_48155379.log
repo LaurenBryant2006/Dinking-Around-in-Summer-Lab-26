@@ -1,0 +1,87 @@
+Job started at: Wed Jun 10 01:04:49 PM EDT 2026
+Running on node: p0027.ten.osc.edu
+Working directory: /users/PAS2608/laurenbryant/Dinking-Around-in-Summer-Lab-26/CNN-work
+----------------------------
+/var/spool/slurmd/job48155379/slurm_script: line 14: cd: /users/PAS2608/laurenbryant/CNN-work: No such file or directory
+2026-06-10 13:04:55.373540: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-06-10 13:05:21.376260: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+loaded data in 3.9s
+training: (41959, 43)
+testing : (10678, 43)
+X_train: (41959, 48, 100, 2) y_train: (41959, 3)
+X_test : (10678, 48, 100, 2) y_test : (10678, 3)
+after normalization, X_train mean: -5.6589123e-08 std: 1.2429539
+Model: "sequential"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ conv2d (Conv2D)                 │ (None, 48, 100, 32)    │           992 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ max_pooling2d (MaxPooling2D)    │ (None, 24, 50, 32)     │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_1 (Conv2D)               │ (None, 24, 50, 64)     │        30,784 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ max_pooling2d_1 (MaxPooling2D)  │ (None, 12, 25, 64)     │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ flatten (Flatten)               │ (None, 19200)          │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense (Dense)                   │ (None, 64)             │     1,228,864 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout (Dropout)               │ (None, 64)             │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_1 (Dense)                 │ (None, 3)              │           195 │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+ Total params: 1,260,835 (4.81 MB)
+ Trainable params: 1,260,835 (4.81 MB)
+ Non-trainable params: 0 (0.00 B)
+Epoch 1/20
+591/591 - 40s - 68ms/step - loss: 0.1313 - val_loss: 0.0390
+Epoch 2/20
+591/591 - 39s - 66ms/step - loss: 0.0637 - val_loss: 0.0346
+Epoch 3/20
+591/591 - 39s - 66ms/step - loss: 0.0525 - val_loss: 0.0226
+Epoch 4/20
+591/591 - 39s - 66ms/step - loss: 0.0464 - val_loss: 0.0186
+Epoch 5/20
+591/591 - 39s - 65ms/step - loss: 0.0422 - val_loss: 0.0601
+Epoch 6/20
+591/591 - 38s - 65ms/step - loss: 0.0412 - val_loss: 0.0221
+Epoch 7/20
+591/591 - 39s - 66ms/step - loss: 0.0356 - val_loss: 0.0158
+Epoch 8/20
+591/591 - 39s - 66ms/step - loss: 0.0338 - val_loss: 0.0154
+Epoch 9/20
+591/591 - 39s - 66ms/step - loss: 0.0329 - val_loss: 0.0225
+Epoch 10/20
+591/591 - 39s - 66ms/step - loss: 0.0304 - val_loss: 0.0253
+Epoch 11/20
+591/591 - 39s - 66ms/step - loss: 0.0290 - val_loss: 0.0127
+Epoch 12/20
+591/591 - 39s - 66ms/step - loss: 0.0279 - val_loss: 0.0250
+Epoch 13/20
+591/591 - 39s - 66ms/step - loss: 0.0264 - val_loss: 0.0137
+Epoch 14/20
+591/591 - 39s - 65ms/step - loss: 0.0255 - val_loss: 0.0089
+Epoch 15/20
+591/591 - 39s - 65ms/step - loss: 0.0248 - val_loss: 0.0126
+Epoch 16/20
+591/591 - 39s - 66ms/step - loss: 0.0224 - val_loss: 0.0109
+Epoch 17/20
+591/591 - 39s - 65ms/step - loss: 0.0216 - val_loss: 0.0081
+Epoch 18/20
+591/591 - 39s - 65ms/step - loss: 0.0210 - val_loss: 0.0081
+Epoch 19/20
+591/591 - 38s - 65ms/step - loss: 0.0199 - val_loss: 0.0090
+Epoch 20/20
+591/591 - 39s - 65ms/step - loss: 0.0194 - val_loss: 0.0104
+trained in 777.5s
+UNWEIGHTED
+  theta: mean= -0.289   std=  0.646
+  phi  : mean= -0.462   std=  7.617
+WEIGHTED
+  theta: mean= -0.233   std=  0.610
+  phi  : mean= -0.294   std=  7.499
+all done
+---------------------------
+Job ended at: Wed Jun 10 01:18:25 PM EDT 2026
